@@ -6,6 +6,7 @@
 All other dependencies are configured in the repository.
 
 ## Frameworks Used
+* Gradle
 * Spring Boot
 * H2 Database - to provide in memory database
 
