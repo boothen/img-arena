@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: tennis
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password: password
+    hikari:
+      maximum-pool-size: 20
+  jackson:
+    deserialization:
+      adjust-dates-to-context-time-zone: false
+    serialization:
+      write-dates-as-timestamps: false
+    time-zone: Europe/London
+  jpa:
+    properties:
+      hibernate:
+        jdbc:
+          time_zone = TimeZone
+        temp:
+          use_jdbc_metadata_defaults: false
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true
+  liquibase:
+    default-schema: tennis
+  main:
+    banner-mode: 'off'
+
+server:
+  max-http-header-size: 12KB
+  port: 8080

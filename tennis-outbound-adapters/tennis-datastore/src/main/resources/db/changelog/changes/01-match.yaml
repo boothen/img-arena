@@ -1,0 +1,34 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: Matt Garner
+      changes:
+        - createTable:
+            tableName: match
+            columns:
+              - column:
+                  name: match_id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: start_date
+                  type: timestamp with time zone
+                  constraints:
+                    nullable: false
+              - column:
+                  name: player_a
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: player_b
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: tournament_id
+                  type: uuid
+                  constraints:
+                    nullable: false

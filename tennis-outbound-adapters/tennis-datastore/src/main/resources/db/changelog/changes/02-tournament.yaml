@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2
+      author: Matt Garner
+      changes:
+        - createTable:
+            tableName: tournament
+            columns:
+              - column:
+                  name: tournament_id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    nullable: false

@@ -1,0 +1,65 @@
+databaseChangeLog:
+- changeSet:
+    id: 5
+    author: Matt Garner
+    changes:
+    - insert:
+        tableName: tournament
+        columns:
+        - column:
+            name: tournament_id
+            value: 'f863607a-4f61-49ce-94d5-b1bfb198e113'
+    - insert:
+        tableName: match
+        columns:
+        - column:
+            name: match_id
+            value: '6fe52e1e-7d98-4940-8827-96142bf2a85b'
+        - column:
+            name: start_date
+            value: '2020-09-30T12:00:00+01:00'
+        - column:
+            name: player_a
+            value: 'Andre Agassi'
+        - column:
+            name: player_b
+            value: 'Boris Becker'
+        - column:
+            name: tournament_id
+            value: 'f863607a-4f61-49ce-94d5-b1bfb198e113'
+    - insert:
+        tableName: match
+        columns:
+        - column:
+            name: match_id
+            value: '0b440c82-55ea-48d7-880a-28fd503e75da'
+        - column:
+            name: start_date
+            value: '2020-09-30T16:00:00+01:00'
+        - column:
+            name: player_a
+            value: 'Pete Sampras'
+        - column:
+            name: player_b
+            value: 'Pat Cash'
+        - column:
+            name: tournament_id
+            value: 'f863607a-4f61-49ce-94d5-b1bfb198e113'
+    - insert:
+        tableName: match
+        columns:
+        - column:
+            name: match_id
+            value: '9e48ab82-b646-4656-bf05-7534835ecda7'
+        - column:
+            name: start_date
+            value: '2020-10-01T16:00:30+01:00'
+        - column:
+            name: player_a
+            value: 'Ivan Lendl'
+        - column:
+            name: player_b
+            value: 'Jeremy Bates'
+        - column:
+            name: tournament_id
+            value: 'f863607a-4f61-49ce-94d5-b1bfb198e113'

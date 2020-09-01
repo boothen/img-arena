@@ -1,0 +1,31 @@
+databaseChangeLog:
+- changeSet:
+    id: 7
+    author: matt-garner
+    changes:
+    - insert:
+        tableName: license
+        columns:
+        - column:
+            name: customer_id
+            value: 456
+        - column:
+            name: licensed_id
+            value: 'f863607a-4f61-49ce-94d5-b1bfb198e113'
+        - column:
+            name: license_type
+            value: 'TOURNAMENT'
+    - insert:
+        tableName: license
+        columns:
+        - column:
+            name: customer_id
+            value: 456
+        - column:
+            name: licensed_id
+            value: '00c4a0bc-c932-4ae6-b0ad-e36f98d566af'
+        - column:
+            name: license_type
+            value: 'MATCH'
+
+

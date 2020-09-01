@@ -1,0 +1,5 @@
+rootProject.name = 'img-arena'
+include ':tennis-core:tennis-core-impl'
+include ':tennis-core:tennis-core-ports'
+include ':tennis-inbound-adapters:tennis-rest-api'
+include ':tennis-outbound-adapters:tennis-datastore'

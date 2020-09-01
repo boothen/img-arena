@@ -1,0 +1,65 @@
+databaseChangeLog:
+- changeSet:
+    id: 4
+    author: Matt Garner
+    changes:
+    - insert:
+        tableName: tournament
+        columns:
+        - column:
+            name: tournament_id
+            value: 'a7d9515a-6907-4534-aad3-45f83b79ce03'
+    - insert:
+        tableName: match
+        columns:
+        - column:
+            name: match_id
+            value: '222b73f8-4262-47f5-9f44-d664e5c5fd39'
+        - column:
+            name: start_date
+            value: '2020-08-31T12:00:00+01:00'
+        - column:
+            name: player_a
+            value: 'Tim Henman'
+        - column:
+            name: player_b
+            value: 'Greg Rusedski'
+        - column:
+            name: tournament_id
+            value: 'a7d9515a-6907-4534-aad3-45f83b79ce03'
+    - insert:
+        tableName: match
+        columns:
+        - column:
+            name: match_id
+            value: '00c4a0bc-c932-4ae6-b0ad-e36f98d566af'
+        - column:
+            name: start_date
+            value: '2020-08-31T16:00:00+01:00'
+        - column:
+            name: player_a
+            value: 'Andy Murray'
+        - column:
+            name: player_b
+            value: 'Andrew Foster'
+        - column:
+            name: tournament_id
+            value: 'a7d9515a-6907-4534-aad3-45f83b79ce03'
+    - insert:
+        tableName: match
+        columns:
+        - column:
+            name: match_id
+            value: '94db026a-8a7f-47fa-b961-4f3a61595d64'
+        - column:
+            name: start_date
+            value: '2020-09-01T16:00:30+01:00'
+        - column:
+            name: player_a
+            value: 'Peter Crouch'
+        - column:
+            name: player_b
+            value: 'John Walters'
+        - column:
+            name: tournament_id
+            value: 'a7d9515a-6907-4534-aad3-45f83b79ce03'

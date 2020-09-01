@@ -1,0 +1,32 @@
+plugins {
+    id 'org.springframework.boot'
+}
+
+dependencies {
+    implementation project(':tennis-core:tennis-core-ports')
+    implementation project(':tennis-core:tennis-core-impl')
+    implementation project(':tennis-outbound-adapters:tennis-datastore')
+
+    implementation group: "com.fasterxml.jackson.core", name: "jackson-databind"
+    implementation group: 'org.apache.commons', name: 'commons-lang3'
+    implementation group: 'org.apache.tomcat.embed', name: 'tomcat-embed-core'
+    implementation group: 'org.apache.tomcat.embed', name: 'tomcat-embed-websocket'
+    implementation group: 'org.hibernate.validator', name: 'hibernate-validator'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-aop'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web'
+
+    testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test'
+}
+
+jar {
+    enabled = true
+}
+
+bootJar {
+
+}
+
+springBoot {
+    buildInfo()
+}

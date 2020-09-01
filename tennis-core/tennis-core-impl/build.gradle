@@ -1,0 +1,7 @@
+dependencies {
+    implementation project(':tennis-core:tennis-core-ports')
+    api project(':tennis-outbound-adapters:tennis-datastore')
+
+    implementation group: 'org.springframework', name: 'spring-context'
+}
+

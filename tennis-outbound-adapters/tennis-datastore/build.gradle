@@ -1,0 +1,18 @@
+dependencies {
+
+    implementation group: "com.fasterxml.jackson.core", name: "jackson-databind"
+    implementation group: 'com.zaxxer', name: 'HikariCP'
+    implementation group: 'javax.validation', name: 'validation-api'
+    implementation group: 'org.apache.commons', name: 'commons-lang3'
+    implementation group: 'org.hibernate', name: 'hibernate-core'
+    implementation group: 'org.hibernate', name: 'hibernate-entitymanager'
+    implementation (group: 'org.hibernate', name: 'hibernate-java8') {
+        exclude group: 'org.jboss.logging', module: 'jboss-logging'
+    }
+    implementation group: 'org.liquibase', name: 'liquibase-core'
+    runtime group: 'com.h2database', name: 'h2'
+    api (group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa')
+    api group: 'org.springframework.data', name: 'spring-data-commons'
+    implementation group: 'org.yaml', name: 'snakeyaml'
+
+}

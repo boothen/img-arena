@@ -1,0 +1,25 @@
+databaseChangeLog:
+- changeSet:
+    id: 3
+    author: Matt Garner
+    changes:
+    - createTable:
+        tableName: license
+        columns:
+        - column:
+            name: customer_id
+            type: bigint
+            constraints:
+                primaryKey: true
+                nullable: false
+        - column:
+            name: licensed_id
+            type: uuid
+            constraints:
+                primaryKey: true
+                nullable: false
+        - column:
+            name: license_type
+            type: varchar(25)
+            constraints:
+                nullable: false
