@@ -41,9 +41,11 @@ The repository structure follows an hexagonal architecture.
 
 ## Useful curl commands
 
-curl 'http://localhost:8080/v1/customer/my-matches?summaryType=AvB' -H 'customer-id: 123' -H 'Accept: application/json' -X GET
-curl 'http://localhost:8080/v1/customer/my-matches?summaryType=AvBTime' -H 'customer-id: 123' -H 'Accept: application/json' -X GET
+> curl 'http://localhost:8080/v1/customer/my-matches?summaryType=AvB' -H 'customer-id: 123' -H 'Accept: application/json' -X GET
 
-curl 'http://localhost:8080/v1/customer/my-matches?summaryType=AvB' -H 'customer-id: 456' -H 'Accept: application/json' -X GET
-curl 'http://localhost:8080/v1/customer/my-matches?summaryType=AvBTime' -H 'customer-id: 456' -H 'Accept: application/json' -X GET
+> curl 'http://localhost:8080/v1/customer/my-matches?summaryType=AvBTime' -H 'customer-id: 123' -H 'Accept: application/json' -X GET
+
+> curl 'http://localhost:8080/v1/customer/my-matches?summaryType=AvB' -H 'customer-id: 456' -H 'Accept: application/json' -X GET
+
+> curl 'http://localhost:8080/v1/customer/my-matches?summaryType=AvBTime' -H 'customer-id: 456' -H 'Accept: application/json' -X GET
 
