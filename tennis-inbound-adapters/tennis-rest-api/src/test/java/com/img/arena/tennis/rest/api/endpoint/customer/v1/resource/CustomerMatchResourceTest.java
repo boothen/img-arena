@@ -1,8 +1,8 @@
 package com.img.arena.tennis.rest.api.endpoint.customer.v1.resource;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.img.arena.tennis.datastore.model.CustomerId;
 import com.img.arena.tennis.core.port.CustomerMatchService;
+import com.img.arena.tennis.datastore.model.CustomerId;
 import com.img.arena.tennis.datastore.model.Match;
 import com.img.arena.tennis.datastore.model.MatchId;
 import com.img.arena.tennis.rest.api.config.Application;
@@ -83,6 +83,26 @@ public class CustomerMatchResourceTest {
     }
 
     @Test
+    public void shouldReturnNoSummaryFieldWhenNoSummaryTypeParameterIsProvided() throws Exception {
+        MatchId matchId = new MatchId(UUID.fromString("ff1b1322-5570-4846-a421-e14acbcc4a2b"));
+        Match match = new Match(matchId,
+                                ZonedDateTime.parse("2020-08-31T12:00:00+01:00"),
+                                "Player 1",
+                                "Player 2");
+        when(customerMatchService.findCustomerMatches(new CustomerId(123L))).thenReturn(Stream.of(match));
+
+        mockMvc.perform(MockMvcRequestBuilders.get(V_1_CUSTOMER_MY_MATCHES)
+                                              .header("customer-id", 123))
+               .andExpect(status().is2xxSuccessful())
+               .andExpect(content().json("[{\"matchId\":\"ff1b1322-5570-4846-a421-e14acbcc4a2b\","
+                                         + "\"startDate\":\"2020-08-31T12:00:00+01:00\","
+                                         + "\"playerA\":\"Player 1\","
+                                         + "\"playerB\":\"Player 2\""
+                                         + "}]"));
+
+    }
+
+    @Test
     public void shouldReturnAvBTimeSummaryWithStartsInWhenAvBTimeSummaryTypeProvided() throws Exception {
         MatchId matchId = new MatchId(UUID.fromString("ff1b1322-5570-4846-a421-e14acbcc4a2b"));
         ZonedDateTime startDate = ZonedDateTime.now().plusMinutes(10).plusSeconds(10);
@@ -97,7 +117,7 @@ public class CustomerMatchResourceTest {
                                               .param("summaryType", "AvBTime"))
                .andExpect(status().is2xxSuccessful())
                .andExpect(content().json("[{\"matchId\":\"ff1b1322-5570-4846-a421-e14acbcc4a2b\","
-                                         + "\"startDate\":\""+ formattedStartDate + "\","
+                                         + "\"startDate\":\"" + formattedStartDate + "\","
                                          + "\"playerA\":\"Player 1\","
                                          + "\"playerB\":\"Player 2\","
                                          + "\"summary\":\"Player 1 vs Player 2, starts in 10 minutes\""
@@ -120,7 +140,7 @@ public class CustomerMatchResourceTest {
                                               .param("summaryType", "AvBTime"))
                .andExpect(status().is2xxSuccessful())
                .andExpect(content().json("[{\"matchId\":\"ff1b1322-5570-4846-a421-e14acbcc4a2b\","
-                                         + "\"startDate\":\""+ formattedStartDate + "\","
+                                         + "\"startDate\":\"" + formattedStartDate + "\","
                                          + "\"playerA\":\"Player 1\","
                                          + "\"playerB\":\"Player 2\","
                                          + "\"summary\":\"Player 1 vs Player 2, started 10 minutes ago\""
@@ -136,8 +156,9 @@ public class CustomerMatchResourceTest {
     }
 
     @Test
-    public void shouldThrowExceptionWhenSummaryTypeIsMissing() throws Exception {
+    public void shouldThrowExceptionWhenSummaryTypeIsInvalid() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get(V_1_CUSTOMER_MY_MATCHES)
+                                              .param("summaryType", "Something")
                                               .header("customer-id", 123))
                .andExpect(status().isBadRequest());
     }

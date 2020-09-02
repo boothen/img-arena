@@ -8,6 +8,7 @@ import com.img.arena.tennis.datastore.model.MatchId;
 import com.img.arena.tennis.rest.api.endpoint.customer.v1.resource.AvBSummaryFormatter;
 import com.img.arena.tennis.rest.api.endpoint.customer.v1.resource.AvBTimeSummaryFormatter;
 import com.img.arena.tennis.rest.api.endpoint.customer.v1.resource.DateTimeProvider;
+import com.img.arena.tennis.rest.api.endpoint.customer.v1.resource.NullSummaryFormatter;
 import com.img.arena.tennis.rest.api.serializers.JsonSerializeToStringSerializer;
 import com.img.arena.tennis.rest.api.serializers.ZonedDateTimeSerializer;
 
@@ -21,6 +22,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.TimeZone;
 import java.util.function.Function;
@@ -32,8 +34,9 @@ import javax.annotation.PostConstruct;
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackages = {"com.img.arena.tennis.datastore.repository"})
 @EntityScan("com.img.arena.tennis.datastore.model")
-@ComponentScan({"com.img.arena.tennis.rest.api.endpoint",
-                "com.img.arena.tennis.core.impl"})
+@ComponentScan({"com.img.arena.tennis.core.impl",
+                "com.img.arena.tennis.rest.api.endpoint",
+                "com.img.arena.tennis.rest.api.handlers"})
 public class ApplicationConfiguration {
 
     @PostConstruct
@@ -43,8 +46,10 @@ public class ApplicationConfiguration {
 
     @Bean
     public Map<String, Function<Match, String>> summaryFormatters(DateTimeProvider dateTimeProvider) {
-        return Map.of("AvB", new AvBSummaryFormatter(),
-                      "AvBTime", new AvBTimeSummaryFormatter(dateTimeProvider));
+        Map<String, Function<Match, String>> summaryFormattersMap = new HashMap<>(Map.of("AvB", new AvBSummaryFormatter(),
+                                                                                         "AvBTime", new AvBTimeSummaryFormatter(dateTimeProvider)));
+        summaryFormattersMap.put(null, new NullSummaryFormatter());
+        return summaryFormattersMap;
     }
 
     @Bean

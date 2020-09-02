@@ -1,6 +1,6 @@
 package com.img.arena.tennis.rest.api.endpoint.customer.v1.response;
 
-
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.img.arena.tennis.datastore.model.MatchId;
 
 import java.time.ZonedDateTime;
@@ -41,6 +41,7 @@ public class CustomerMatchResponse {
         return playerB;
     }
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     public String getSummary() {
         return summary;
     }

@@ -37,7 +37,7 @@ public class CustomerMatchResource {
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public Stream<CustomerMatchResponse> findCustomerMatches(@RequestHeader(CUSTOMER_ID) CustomerId customerId,
-                                                             @RequestParam(SUMMARY_TYPE) String summaryType) {
+                                                             @RequestParam(value = SUMMARY_TYPE, required = false) String summaryType) {
         Function<Match, String> summaryFormatter = summaryTypeFormatter.find(summaryType);
         return customerMatchService.findCustomerMatches(customerId)
                                    .map(match -> matchToCustomerMatchResponse.toResponse(match, summaryFormatter));
